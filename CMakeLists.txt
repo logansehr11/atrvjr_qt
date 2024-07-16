@@ -8,6 +8,9 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(Qt5Core REQUIRED)
+find_package(Qt5Quick REQUIRED)
+find_package(Qt5Widgets REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -20,5 +23,19 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+add_executable(atrvjr_qt src/qtInterface.cpp)
+ament_target_dependencies(atrvjr_qt rclcpp)
+
+target_link_libraries(atrvjr_qt
+  Qt5::Core
+  Qt5::Quick
+  Qt5::Widgets
+)
+
+install(TARGETS
+  atrvjr_qt
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 ament_package()
