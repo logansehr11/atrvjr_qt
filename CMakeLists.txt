@@ -8,9 +8,13 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(Qt5Core REQUIRED)
-find_package(Qt5Quick REQUIRED)
-find_package(Qt5Widgets REQUIRED)
+find_package(Qt5 REQUIRED COMPONENTS
+Core
+Quick
+Widgets
+Multimedia
+MultimediaWidgets
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -31,6 +35,8 @@ target_link_libraries(atrvjr_qt
   Qt5::Core
   Qt5::Quick
   Qt5::Widgets
+  Qt5::Multimedia
+  Qt5::MultimediaWidgets
 )
 
 install(TARGETS

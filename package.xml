@@ -13,10 +13,13 @@
 
   <build_depend>qtbase5-dev</build_depend>
   <build_depend>qtdeclarative5-dev</build_depend>
+  <build_depend>qtmultimedia5-dev</build_depend>
   <exec_depend>libqt5-core</exec_depend>
   <exec_depend>libqt5-gui</exec_depend>
   <exec_depend>libqt5-quick</exec_depend>
   <exec_depend>libqt5-widgets</exec_depend>
+  <exec_depend>libqt5-multimedia</exec_depend>
+  <exec_depend>libqt5-multimediawidgets</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
