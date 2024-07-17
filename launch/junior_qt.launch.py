@@ -8,12 +8,13 @@ from launch_ros.parameter_descriptions import ParameterValue
 
 def generate_launch_description():
     ld = LaunchDescription()
-
-    #packagePath = FindPackageShare('atrv_jr_qt')
     
-
-    #ld.add_action(
-        #Node()
-    #)
+    ld.add_action(
+        Node(
+            package='atrvjr_qt',
+            executable='atrvjr_qt',
+            output='screen'
+        )
+    )
 
     return ld
