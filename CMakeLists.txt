@@ -8,6 +8,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
 find_package(Qt5 REQUIRED COMPONENTS
 Core
 Quick
@@ -28,8 +29,19 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-add_executable(atrvjr_qt src/qtInterface.cpp)
-ament_target_dependencies(atrvjr_qt rclcpp)
+add_executable(atrvjr_qt
+  src/main.cpp 
+  src/button_pub.cpp
+  src/main_gui.cpp
+  include/atrvjr_qt/button_pub.hpp
+  include/atrvjr_qt/main_gui.hpp
+)
+
+target_include_directories(${PROJECT_NAME}
+  PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  PUBLIC $<INSTALL_INTERFACE:include>)
+
+ament_target_dependencies(atrvjr_qt rclcpp std_msgs)
 
 target_link_libraries(atrvjr_qt
   Qt5::Core
