@@ -4,12 +4,12 @@
 #include <QCamera>
 #include <QCameraViewfinder>
 
-MainGUI::MainGUI(const std::shared_ptr<InterfaceNode>& initPubNode) : QMainWindow(nullptr), pubNode(initPubNode) {
+MainGUI::MainGUI(const std::shared_ptr<InterfaceNode>& initPubNode) : QMainWindow(nullptr), pubNode(initPubNode){
     window.resize(800, 664);
     window.setWindowTitle(QApplication::translate(
-        "JuniorWindow", "Junior Window"));
+        "JuniorWindow", "ATRV-JR"));
     button = new QPushButton(QApplication::translate(
-        "JuniorWindow", "Button"), &window);
+        "JuniorWindow", "Publish Message"), &window);
     button->resize(256, 64);
     button->move((window.size().width() - button->size().width())/2, 600);
     connect(button, &QPushButton::clicked, this, &MainGUI::process_click);
@@ -27,6 +27,6 @@ MainGUI::MainGUI(const std::shared_ptr<InterfaceNode>& initPubNode) : QMainWindo
 
 MainGUI::~MainGUI() {}
 
-void MainGUI::process_click() {
+void MainGUI::process_click(){
     pubNode->publishMsg("This is a message from Junior's Interface!");
 }

@@ -11,7 +11,7 @@
 
 class MainGUI : public QMainWindow {
     //Q_OBJECT
- 
+ private:
     void process_click();
 
     const std::shared_ptr<InterfaceNode> pubNode;
