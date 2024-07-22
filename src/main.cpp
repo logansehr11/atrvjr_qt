@@ -21,8 +21,8 @@ int main(int argc, char* argv[]){
     QApplication app(argc, argv);
     rclcpp::init(argc, argv);
     
-    auto node = std::make_shared<InterfaceNode>();
-    auto gui = std::make_shared<MainGUI>(node);
+    auto node = std::make_shared<ButtonPublisher>();
+    auto gui = std::make_shared<ATRVJR_GUI>(node);
     
     app.processEvents();
 

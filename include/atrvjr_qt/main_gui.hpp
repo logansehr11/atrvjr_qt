@@ -9,18 +9,18 @@
 
 #include "atrvjr_qt/button_pub.hpp"
 
-class MainGUI : public QMainWindow {
+class ATRVJR_GUI : public QMainWindow {
     //Q_OBJECT
  private:
     void process_click();
 
-    const std::shared_ptr<InterfaceNode> pubNode;
+    const std::shared_ptr<ButtonPublisher> pubNode;
     QWidget window;
     QPushButton* button;
     QCamera camera;
     QCameraViewfinder* vf;
 
  public: 
-    MainGUI(const std::shared_ptr<InterfaceNode>& initPubNode);
-    ~MainGUI();
+    ATRVJR_GUI(const std::shared_ptr<ButtonPublisher>& initPubNode);
+    ~ATRVJR_GUI();
 };

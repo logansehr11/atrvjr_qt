@@ -3,11 +3,11 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
-class InterfaceNode : public rclcpp::Node {
+class ButtonPublisher : public rclcpp::Node {
  private:
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher;
 
  public:
-    InterfaceNode();
+    ButtonPublisher();
     void publishMsg(const std::string msg);
 };
