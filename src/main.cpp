@@ -1,20 +1,8 @@
 #include <iostream>
-#include <QApplication>
-#include <QCamera>
-#include <QCameraViewfinder>
 #include <QObject>
-#include <QPushButton>
 #include <QQuickItem>
-#include <QWidget>
 #include "atrvjr_qt/button_pub.hpp"
 #include "atrvjr_qt/main_gui.hpp"
-
-
-static void siginthandler(int sigint)
-{
-    std::cout << "SIGINT CODE " << sigint << std::endl;
-    QApplication::quit();
-}
 
 int main(int argc, char* argv[]){
 
@@ -32,9 +20,13 @@ int main(int argc, char* argv[]){
     {
         exec.spin_some();
         app.processEvents();
+        if (!(gui->isClosed())) {
+            std::cout << "User Closed Window, Shutting Down..." << std::endl;
+            break;
+        }
     }
-    signal(SIGINT, siginthandler);
-
+    QApplication::quit();
     exec.remove_node(node);
     rclcpp::shutdown();
+    return 0;
 }

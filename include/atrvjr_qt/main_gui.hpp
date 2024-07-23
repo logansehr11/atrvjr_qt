@@ -15,12 +15,13 @@ class ATRVJR_GUI : public QMainWindow {
     void process_click();
 
     const std::shared_ptr<ButtonPublisher> pubNode;
-    QWidget window;
+    QWidget* window;
     QPushButton* button;
     QCamera camera;
     QCameraViewfinder* vf;
 
  public: 
     ATRVJR_GUI(const std::shared_ptr<ButtonPublisher>& initPubNode);
+    bool isClosed() { return window->isVisible(); }
     ~ATRVJR_GUI();
 };
