@@ -16,14 +16,10 @@ int main(int argc, char* argv[]){
 
     rclcpp::executors::MultiThreadedExecutor exec;
     exec.add_node(node);
-    while (rclcpp::ok())
+    while (rclcpp::ok() && gui->isVisible())
     {
         exec.spin_some();
         app.processEvents();
-        if (!(gui->isClosed())) {
-            std::cout << "User Closed Window, Shutting Down..." << std::endl;
-            break;
-        }
     }
     QApplication::quit();
     exec.remove_node(node);
