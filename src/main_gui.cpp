@@ -9,7 +9,7 @@ ATRVJR_GUI::ATRVJR_GUI(const std::shared_ptr<ButtonPublisher>& initPubNode) : QM
 
     // Publish Button Setup
     button = new QPushButton(QApplication::translate(
-        "JuniorWindow", "Publish Message"), *(&window));
+        "JuniorWindow", "Publish Message"), window);
     button->resize(256, 64);
     button->move((window->size().width() - button->size().width())/2, 600);
     connect(button, 
@@ -19,14 +19,17 @@ ATRVJR_GUI::ATRVJR_GUI(const std::shared_ptr<ButtonPublisher>& initPubNode) : QM
     );
     
     // Viewfinder Setup
-    vf = new QCameraViewfinder(*(&window));
+    vf = new QCameraViewfinder(window);
     vf->resize(800, 600);
     vf->move((window->size().width() - vf->size().width())/2, 0);
 
+    // Camera Setup 
+    camera = new QCamera();
+    
     // Display Instructions
     vf->show();
-    camera.setViewfinder(*(&vf));
-    camera.start();
+    camera->setViewfinder(vf);
+    camera->start();
     button->show();
     window->show();
 }
@@ -34,6 +37,7 @@ ATRVJR_GUI::ATRVJR_GUI(const std::shared_ptr<ButtonPublisher>& initPubNode) : QM
 ATRVJR_GUI::~ATRVJR_GUI(){
     delete vf;
     delete button;
+    delete camera;
     delete window;
 }
 

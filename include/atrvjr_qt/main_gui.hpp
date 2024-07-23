@@ -17,7 +17,7 @@ class ATRVJR_GUI : public QMainWindow {
     const std::shared_ptr<ButtonPublisher> pubNode;
     QWidget* window;
     QPushButton* button;
-    QCamera camera;
+    QCamera* camera;
     QCameraViewfinder* vf;
 
  public: 
