@@ -1,6 +1,6 @@
 #include "atrvjr_qt/button_pub.hpp"
 
-ButtonPublisher::ButtonPublisher() : Node("Interface_Node"){
+ButtonPublisher::ButtonPublisher() : Node("Button_Node"){
     publisher = this->create_publisher<std_msgs::msg::String>("string_msg_topic", 10);
 }
 

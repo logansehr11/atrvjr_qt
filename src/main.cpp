@@ -3,6 +3,7 @@
 #include <QQuickItem>
 #include "atrvjr_qt/button_pub.hpp"
 #include "atrvjr_qt/main_gui.hpp"
+#include "atrvjr_qt/camera_sub.hpp"
 
 int main(int argc, char* argv[]){
 

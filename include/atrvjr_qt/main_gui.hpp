@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MAIN_GUI
+#define MAIN_GUI
 
 #include <QPushButton>
 #include <QWidget>
@@ -8,6 +9,7 @@
 #include <QCameraViewfinder>
 
 #include "atrvjr_qt/button_pub.hpp"
+#include "atrvjr_qt/camera_sub.hpp"
 
 class ATRVJR_GUI : public QMainWindow {
     //Q_OBJECT
@@ -23,3 +25,5 @@ class ATRVJR_GUI : public QMainWindow {
     ATRVJR_GUI(const std::shared_ptr<ButtonPublisher>& initPubNode);
     ~ATRVJR_GUI();
 };
+
+#endif
