@@ -1,6 +1,6 @@
 #include "atrvjr_qt/main_gui.hpp"
 
-ATRVJR_GUI::ATRVJR_GUI(const std::shared_ptr<ButtonPublisher>& initPubNode) : QMainWindow(nullptr), pubNode(initPubNode){
+ATRVJR_GUI::ATRVJR_GUI(const std::shared_ptr<ButtonPublisher>& initPub, const std::shared_ptr<CameraSubscriber>& initCam) : QMainWindow(nullptr), pubNode(initPub), camNode(initCam){
     // Window Setup
     this->resize(800, 664);
     this->setWindowTitle(QApplication::translate(
@@ -16,27 +16,22 @@ ATRVJR_GUI::ATRVJR_GUI(const std::shared_ptr<ButtonPublisher>& initPubNode) : QM
         this, 
         &ATRVJR_GUI::process_click
     );
-    
-    // Viewfinder Setup
-    vf = new QCameraViewfinder(this);
-    vf->resize(800, 600);
-    vf->move((this->size().width() - vf->size().width())/2, 0);
 
-    // Camera Setup 
-    camera = new QCamera();
+    // Camera Label Setup
+    imgLabel = new QLabel(this);
+    camNode->setLabel(imgLabel);
+    imgLabel->resize(640, 480);
+    imgLabel->move((this->size().width() - imgLabel->size().width())/2, 0);
 
-    // Display Instructions
-    vf->show();
-    camera->setViewfinder(vf);
-    camera->start();
+    // Interface View
     button->show();
+    imgLabel->show();
     this->show();
 }
 
 ATRVJR_GUI::~ATRVJR_GUI(){
-    delete vf;
     delete button;
-    delete camera;
+    delete imgLabel;
 }
 
 void ATRVJR_GUI::process_click(){

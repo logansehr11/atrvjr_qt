@@ -11,6 +11,14 @@ def generate_launch_description():
     
     ld.add_action(
         Node(
+            package='usb_cam',
+            executable='usb_cam_node_exe',
+            output='screen'
+        )
+    )
+
+    ld.add_action(
+        Node(
             package='atrvjr_qt',
             executable='atrvjr_qt',
             output='screen'

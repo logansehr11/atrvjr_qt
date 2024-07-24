@@ -11,12 +11,14 @@ int main(int argc, char* argv[]){
     rclcpp::init(argc, argv);
     
     auto node = std::make_shared<ButtonPublisher>();
-    auto gui = std::make_shared<ATRVJR_GUI>(node);
+    auto cam_node = std::make_shared<CameraSubscriber>();
+    auto gui = std::make_shared<ATRVJR_GUI>(node, cam_node);
     
     app.processEvents();
 
     rclcpp::executors::MultiThreadedExecutor exec;
     exec.add_node(node);
+    exec.add_node(cam_node);
     while (rclcpp::ok() && gui->isVisible())
     {
         exec.spin_some();
@@ -24,6 +26,7 @@ int main(int argc, char* argv[]){
     }
     QApplication::quit();
     exec.remove_node(node);
+    exec.remove_node(cam_node);
     rclcpp::shutdown();
     return 0;
 }
