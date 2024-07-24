@@ -5,6 +5,5 @@ CameraSubscriber::CameraSubscriber() : Node("Camera_Node"){
 }
 
 void CameraSubscriber::image_callback(const sensor_msgs::msg::Image::SharedPtr msg){
-    img = ros_image_to_qimage::Convert(*msg);
-    label->setPixmap(QPixmap::fromImage(img));
+    label->setPixmap(QPixmap::fromImage(ros_image_to_qimage::Convert(*msg)));
 }

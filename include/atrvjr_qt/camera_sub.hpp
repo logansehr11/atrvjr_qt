@@ -10,7 +10,6 @@
 class CameraSubscriber : public rclcpp::Node {
  private:
     rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr subscriber;
-    QImage img;
     QLabel* label;
 
  public:
