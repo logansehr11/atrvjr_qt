@@ -10,6 +10,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
 find_package(ros_image_to_qimage)
 find_package(Qt5 REQUIRED COMPONENTS
 Core
@@ -34,8 +35,6 @@ endif()
 add_executable(atrvjr_qt
   src/main.cpp 
   src/button_pub.cpp
-  src/main_gui.cpp
-  src/camera_sub.cpp
   include/atrvjr_qt/button_pub.hpp
   include/atrvjr_qt/main_gui.hpp
   include/atrvjr_qt/camera_sub.hpp
