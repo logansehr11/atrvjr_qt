@@ -23,16 +23,10 @@ class ATRVJR_GUI : public QMainWindow {
       nodes.push_back(std::make_shared<T>(name, layout, this));
 
       int32_t minX = std::min(this->frameGeometry().x(), layout.x());
-      int32_t minY = std::min(
-         this->frameGeometry().y() - this->frameGeometry().height(),
-         layout.y() - layout.height()
-      );
+      int32_t minY = std::min(this->frameGeometry().y(), layout.y());
 
-      int32_t maxX = std::max(
-         this->frameGeometry().x() + this->frameGeometry().width(), 
-         layout.x() + layout.width()
-      );
-      int32_t maxY = std::max(this->frameGeometry().y(), layout.y());
+      int32_t maxX = std::max(this->frameGeometry().x() + this->frameGeometry().width(), layout.x() + layout.width());
+      int32_t maxY = std::max(this->frameGeometry().y() + this->frameGeometry().height(), layout.y() + layout.height());
 
       this->move(minX, minY);
       this->resize((maxX - minX), (maxY - minY));
