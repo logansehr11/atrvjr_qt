@@ -16,7 +16,7 @@ class CameraSubscriber : public rclcpp::Node{
    }
    QLabel* label;
  public:
-   CameraSubscriber(const char* name, QRect layout, QMainWindow* window): Node(name), label(new QLabel(window)){
+   CameraSubscriber(const char* name, QRect layout, QMainWindow* window) : Node(name), label(new QLabel(window)){
       subscriber = this->create_subscription<sensor_msgs::msg::Image>(
          "/image_raw", 
          10, 

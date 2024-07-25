@@ -34,7 +34,6 @@ endif()
 
 add_executable(atrvjr_qt
   src/main.cpp 
-  src/button_pub.cpp
   include/atrvjr_qt/button_pub.hpp
   include/atrvjr_qt/main_gui.hpp
   include/atrvjr_qt/camera_sub.hpp

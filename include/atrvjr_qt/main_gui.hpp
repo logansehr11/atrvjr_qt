@@ -8,8 +8,10 @@
 #include <vector>
 
 class ATRVJR_GUI : public QMainWindow {
+   //Q_OBJECT
+ private:
    std::vector<rclcpp::Node::SharedPtr> nodes;
-public:
+ public:
    ATRVJR_GUI(): QMainWindow() {
       this->setWindowTitle("ATRV-JR");
       this->show();
